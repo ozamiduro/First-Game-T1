@@ -6,10 +6,11 @@ public class Player : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] GameObject bullet;
+    [SerializeField] GameObject PowerB;
     [SerializeField] float nextfire;
-
+    bool modo=false;
+    int counter;
     float minX, maxX, minY, maxY, tamX, tamY, canFire;
-    float NST = 7;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +34,24 @@ public class Player : MonoBehaviour
     void Update()
     {
         Movement();
-        Fire();
+        ChangeMode();
+        
+        if (Input.GetKey(KeyCode.Space))
+        {
+            counter++;
+        }
+
+        if (modo == false)
+        {
+            Fire();
+        }
+        else
+        {
+            PowerBullet();
+        }
+
+
+
     }
 
     void Movement()
@@ -53,16 +71,32 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && Time.time >= canFire)
         {
-            Instantiate(bullet, transform.position - new Vector3(0,tamY/5,0), transform.rotation);
+            Instantiate(bullet, transform.position - new Vector3(0, tamY / 2, 0), transform.rotation);
             canFire = Time.time + nextfire;
         }
     }
 
-    void Damagex2()
+    void PowerBullet()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && Time.time == NST)
+        if (Input.GetKeyUp(KeyCode.Space) && counter >= 600)
         {
+            Instantiate(PowerB, transform.position - new Vector3(0, tamY / 2, 0), transform.rotation);
+            counter = 0;
+        }
+    }
 
+    void ChangeMode()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (modo == true)
+            {
+                modo = false;
+            }
+            else if (modo == false)
+            {
+                modo = true;
+            }
         }
     }
 }

@@ -56,8 +56,6 @@ public class Enemy : MonoBehaviour
                 life = transform.GetChild(nChild-1).gameObject;
                 life.gameObject.GetComponent<SpriteRenderer>().sprite = NHP;
                 
-                Debug.Log(nChild);
-                Debug.Log(transform.GetChild(3));
                 nChild -= 1;
             } 
             else 
@@ -65,5 +63,26 @@ public class Enemy : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+
+        if (collision.gameObject.CompareTag("PowerBullet"))
+        {
+            if(nChild > 1)
+            {
+                life = transform.GetChild(nChild - 1).gameObject;
+                life.gameObject.GetComponent<SpriteRenderer>().sprite = NHP;
+                life = transform.GetChild(nChild - 2).gameObject;
+                life.gameObject.GetComponent<SpriteRenderer>().sprite = NHP;
+                nChild -= 2;
+                if (nChild == 0)
+                {
+                    Destroy(this.gameObject);
+                }
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+        }
+
     }
 }

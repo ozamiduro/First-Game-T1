@@ -25,9 +25,10 @@ public class Bullet : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        
+
+        if (!collision.gameObject.CompareTag("PowerBullet"))
+        {
+            Destroy(this.gameObject);
+        }
     }
-
-    
-
 }

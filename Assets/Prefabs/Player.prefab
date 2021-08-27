@@ -97,4 +97,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   bullet: {fileID: 6117729629903000676, guid: 52127f3ab029753448ae2f7809d032ec, type: 3}
+  PowerB: {fileID: 5651583458462118921, guid: f29e87469fc689d499ecbb382c3cf790, type: 3}
   nextfire: 0.5
+  nextUFire: 5
