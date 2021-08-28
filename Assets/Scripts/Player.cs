@@ -39,7 +39,10 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             counter++;
+            Debug.Log(counter);
         }
+        
+        
 
         if (modo == false)
         {
@@ -81,6 +84,10 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space) && counter >= 600)
         {
             Instantiate(PowerB, transform.position - new Vector3(0, tamY / 2, 0), transform.rotation);
+            counter = 0;
+        }
+        else if (Input.GetKeyUp(KeyCode.Space) && counter< 600)
+        {
             counter = 0;
         }
     }
