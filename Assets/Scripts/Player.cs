@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         float tamX = (GetComponent<SpriteRenderer>()).bounds.size.x;
         float tamY = (GetComponent<SpriteRenderer>()).bounds.size.y;
 
@@ -42,7 +41,6 @@ public class Player : MonoBehaviour
             Debug.Log(counter);
         }
         
-        
 
         if (modo == false)
         {
@@ -52,9 +50,6 @@ public class Player : MonoBehaviour
         {
             PowerBullet();
         }
-
-
-
     }
 
     void Movement()
@@ -76,6 +71,7 @@ public class Player : MonoBehaviour
         {
             Instantiate(bullet, transform.position - new Vector3(0, tamY / 2, 0), transform.rotation);
             canFire = Time.time + nextfire;
+            counter = 0;
         }
     }
 
